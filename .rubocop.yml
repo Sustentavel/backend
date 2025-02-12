@@ -1,0 +1,23 @@
+
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+inherit_from:
+  - ./rubocop/rubocop_style.yml
+
+AllCops:
+  TargetRubyVersion: 3.4.1
+
+  Exclude:
+    - 'config/**/*'
+    - 'bundle_cache/**/*'
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'bundle_cache/**/*'
+    - 'bin/**/*'
+    - '.bundle/*'
+    - 'public/**/*'
+    - 'lib/tasks/**/*'

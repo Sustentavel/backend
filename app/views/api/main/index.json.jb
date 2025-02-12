@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+{
+  version: '1.0.0',
+  message: 'Welcome to the API',
+  docs: {
+    url: '/api-docs',
+    description: 'API documentation'
+  },
+  maintaners: [
+    { ra: '23000201', name: 'Everton Henrique Lopes', email: 'everton.lopes@sou.unifeob.edu.br' },
+    { ra: '23000897', name: 'Fábio Koiti Konda', email: 'fabio.konda@sou.unifeob.edu.br' },
+    { ra: '23000019', name: 'Lucas Pizol Ferreira', email: 'lucas.pizol@sou.unifeob.edu.br' },
+    { ra: '23001518', name: 'Mariana Franceschi Tessarini', email: 'mariana.tessarini@sou.unifeob.edu.br' },
+    { ra: '23000825', name: 'Yan Gomes Aguiar de Almeida', email: 'yan.aguiar@sou.unifeob.edu.br' }
+  ],
+  instituion: {
+    name: 'Centro Universitário da Fundação de Ensino Octávio Bastos',
+    acronym: 'UNIFEOB',
+    url: 'https://www.unifeob.edu.br'
+  }
+}
