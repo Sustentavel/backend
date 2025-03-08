@@ -8,7 +8,6 @@ inherit_from:
 
 AllCops:
   TargetRubyVersion: 3.4.1
-
   Exclude:
     - 'config/**/*'
     - 'bundle_cache/**/*'
@@ -21,3 +20,12 @@ AllCops:
     - '.bundle/*'
     - 'public/**/*'
     - 'lib/tasks/**/*'
+
+Metrics/BlockLength:
+  AllowedMethods: ['describe', 'context']
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/StringHashKeys:
+  Enabled: false

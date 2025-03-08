@@ -4,10 +4,15 @@ Rails.application.routes.draw do
 
   defaults format: :json do
     namespace :api do
-      resources :test, only: :index
+      namespace :v1 do
+        namespace :authentication do
+          resources :login, only: :create
+          resources :register, only: :create
+        end
+      end
     end
 
-    get "/" => "api/main#index", as: :main, only: :index
+    get "/" => "api/v1/main#index", as: :main, only: :index
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

@@ -20,15 +20,20 @@ gem 'solid_queue'
 gem 'sqlite3', '>= 2.1'
 gem 'thruster', require: false
 gem 'tzinfo-data', platforms: %i[windows jruby]
+gem 'paper_trail'
 
+gem 'rails-i18n'
 gem 'rswag-api'
 gem 'rswag-ui'
+
+gem 'faker'
 
 group :development, :test do
   gem 'annotate'
   gem 'brakeman', require: false
   gem 'byebug'
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'factory_bot_rails'
   gem 'rubocop-rails-omakase', require: false
 
   gem 'rubocop', require: false
@@ -38,4 +43,9 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'rswag-specs'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end

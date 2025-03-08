@@ -2,10 +2,10 @@
 
 {
   version: '1.0.0',
-  message: 'Welcome to the API',
+  message: 'Welcome to Handu API',
   docs: {
     url: '/api-docs',
-    description: 'API documentation'
+    description: 'Handu API documentation'
   },
   maintaners: [
     { ra: '23000201', name: 'Everton Henrique Lopes', email: 'everton.lopes@sou.unifeob.edu.br' },

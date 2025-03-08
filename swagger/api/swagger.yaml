@@ -1,9 +1,100 @@
 ---
 openapi: 3.0.1
 info:
-  title: API V1
+  title: Authentication API
   version: v1
 paths:
+  "/api/v1/authentication/login":
+    post:
+      summary: Authenticate an user
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '401':
+          description: User or password invalid
+          content:
+            application/json:
+              example:
+                message: Usuário ou senha inválidos.
+        '200':
+          description: Informations loaded successfully
+          content:
+            application/json:
+              example:
+                id: 1
+                email: user1@email.com
+                fullName: João Luca Crespo Neto
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE1MjAwNjl9.aVC4Tks_OEpmQv1VWI6MVaY7Xqm0uKWHlZCYdWnsICo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+              required:
+              - email
+              - password
+  "/api/v1/authentication/register":
+    post:
+      summary: Register an user
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '409':
+          description: User already exists
+          content:
+            application/json:
+              example:
+                message: Usuário já existente
+        '422':
+          description: Invalid password
+          content:
+            application/json:
+              example:
+                message: 'A validação falhou: Senha necessita ter pelo menos 8 caracteres,
+                  uma letra maiúscula, uma letra minúscula, um número e um caractere
+                  especial'
+                errors:
+                  password:
+                  - necessita ter pelo menos 8 caracteres, uma letra maiúscula, uma
+                    letra minúscula, um número e um caractere especial
+        '201':
+          description: Created successfully
+          content:
+            application/json:
+              example:
+                id: 2
+                email: lillie.padberg@osinski.test
+                fullName: Srta. Luiz Otávio Domingues
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE1MjAwNjl9.-ciocm6gw3U1i7sNKy_G6zS6BNxziHFyDVg5K1GzAtQ
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    full_name:
+                      type: string
+              required:
+              - email
+              - password
+              - full_name
   "/":
     get:
       summary: Shows informations of API
@@ -16,10 +107,10 @@ paths:
             application/json:
               example:
                 version: 1.0.0
-                message: Welcome to the API
+                message: Welcome to Handu API
                 docs:
                   url: "/api-docs"
-                  description: API documentation
+                  description: Handu API documentation
                 maintaners:
                 - ra: '23000201'
                   name: Everton Henrique Lopes

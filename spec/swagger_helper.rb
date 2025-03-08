@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+ENV['RAILS_ENV'] = 'test'
+
+require File.expand_path('../config/environment', __dir__)
+require 'database_cleaner'
+require 'rspec/rails'
 require 'spec_helper'
 
 RSpec.configure do |config|
@@ -7,10 +12,10 @@ RSpec.configure do |config|
   config.swagger_dry_run = false
 
   config.openapi_specs = {
-    'api/swagger.yaml': {
+    'api/swagger.yaml' => {
       openapi: '3.0.1',
       info: {
-        title: 'API V1',
+        title: 'Authentication API',
         version: 'v1'
       },
       paths: {},

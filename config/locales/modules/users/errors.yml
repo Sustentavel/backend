@@ -1,0 +1,16 @@
+pt-BR:
+  modules/users/errors/messages:
+    invalid_password: "necessita ter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial"
+    error_creating: "Erro ao criar usuário"
+    username_taken: "já está em uso"
+    email_taken: "já está em uso"
+    cellphone_taken: "já está em uso"
+    invalid_credentials: "Credenciais inválidas"
+    user_already_exists: "Usuário já existente"
+
+en:
+  modules/users/errors/messages:
+    invalid_password: "needs to have at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
+    error_creating: "Error creating user"
+    invalid_credentials: "Invalid credentials"
+    user_already_exists: "User already exists"
