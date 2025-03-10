@@ -24,8 +24,8 @@ paths:
               example:
                 id: 1
                 email: user1@email.com
-                fullName: Maria Alice Moraes Filho
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE2NjA1ODl9.1E6CAT6lEVVDNLw9cE6lDeA5dBeblybXY0GaLb9ntwY
+                fullName: Karla Jesus
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE2NjA3Mzd9.gE_waSEGDYvP5Rw2-P3gFsWnmGRevveqDNGBavhdZUw
       requestBody:
         content:
           application/json:
@@ -73,9 +73,9 @@ paths:
             application/json:
               example:
                 id: 2
-                email: chantal@bashirian.test
-                fullName: Dr. Maria Valentina Cachoeira
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE2NjA1ODl9.dgYkOdFIBCjsP2nN0OYuh3sPPCrVuPT0oqS9wybKnic
+                email: corey@bode-denesik.example
+                fullName: Danilo Vieira
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE2NjA3Mzd9.yGRZ7dc8GtmvEEXOeKtEpldcYCCPyIJXBeCt1keaKhw
       requestBody:
         content:
           application/json:
@@ -183,9 +183,31 @@ paths:
                     from_language:
                       type: string
                       example: en
+                      enum:
+                      - en
+                      - es
+                      - fr
+                      - de
+                      - it
+                      - ja
+                      - ko
+                      - pt
+                      - ru
+                      - zh
                     to_language:
                       type: string
                       example: pt
+                      enum:
+                      - en
+                      - es
+                      - fr
+                      - de
+                      - it
+                      - ja
+                      - ko
+                      - pt
+                      - ru
+                      - zh
                   required:
                   - text
                   - from_language
