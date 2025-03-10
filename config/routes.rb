@@ -9,6 +9,8 @@ Rails.application.routes.draw do
           resources :login, only: :create
           resources :register, only: :create
         end
+
+        resources :translate_text, only: :create
       end
     end
 

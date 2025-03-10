@@ -27,7 +27,7 @@ RSpec.configure do |config|
               default: ENV.fetch('DEVELOPMENT_URL')
             }
           }
-        }
+        },
       ]
     }
   }

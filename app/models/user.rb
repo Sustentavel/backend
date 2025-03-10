@@ -28,6 +28,8 @@ class User < ApplicationRecord
   before_save :validate_existance, if: -> { email_changed? }
   before_save :validate_password_strength, if: -> { self.password_digest_changed? }
 
+  has_many :ai_responses
+
   private
 
   def validate_password_strength

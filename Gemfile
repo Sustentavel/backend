@@ -21,6 +21,8 @@ gem 'sqlite3', '>= 2.1'
 gem 'thruster', require: false
 gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'paper_trail'
+gem "ruby-gemini-ai"
+gem "openai"
 
 gem 'rails-i18n'
 gem 'rswag-api'

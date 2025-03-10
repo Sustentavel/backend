@@ -6,6 +6,7 @@ require File.expand_path('../config/environment', __dir__)
 require 'database_cleaner'
 require 'rspec/rails'
 require 'shoulda/matchers'
+Dir[Rails.root.join('spec/helpers/**/*.rb')].sort.each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -18,6 +19,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.strategy = :transaction
   end
+
 
   config.around(:each) do |spec|
     DatabaseCleaner.cleaning { spec.run }

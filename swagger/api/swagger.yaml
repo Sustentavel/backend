@@ -24,8 +24,8 @@ paths:
               example:
                 id: 1
                 email: user1@email.com
-                fullName: João Luca Crespo Neto
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE1MjAwNjl9.aVC4Tks_OEpmQv1VWI6MVaY7Xqm0uKWHlZCYdWnsICo
+                fullName: Dra. Luan Raia
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE2NjAwODd9.m-s87IKA34NLu0BWcs2u9mFBviRXVa5T-b2I1OWSJdM
       requestBody:
         content:
           application/json:
@@ -73,9 +73,9 @@ paths:
             application/json:
               example:
                 id: 2
-                email: lillie.padberg@osinski.test
-                fullName: Srta. Luiz Otávio Domingues
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE1MjAwNjl9.-ciocm6gw3U1i7sNKy_G6zS6BNxziHFyDVg5K1GzAtQ
+                email: keneth_huel@emmerich-goldner.test
+                fullName: Luna Pedroso
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE2NjAwODd9.-1Z7s6hq8fNUEjLmmGNqjyOSGyeW522OKkGvmCIza1s
       requestBody:
         content:
           application/json:
@@ -131,6 +131,67 @@ paths:
                   name: Centro Universitário da Fundação de Ensino Octávio Bastos
                   acronym: UNIFEOB
                   url: https://www.unifeob.edu.br
+  "/api/v1/translate_text":
+    post:
+      summary: Translate an text to another language
+      tags:
+      - Translate Text
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Translated successfully
+          content:
+            application/json:
+              example:
+                message: Olá, mundo!
+        '400':
+          description: Invalid language
+          content:
+            application/json:
+              example:
+                message: Linguagem de Destino não está incluído na lista
+        '401':
+          description: Expired or invalid session
+          content:
+            application/json:
+              example:
+                errors: Sessão expirada ou inválida.
+        '422':
+          description: Invalid params
+          content:
+            application/json:
+              example:
+                message: 'param is missing or the value is empty or invalid: translate'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                translate:
+                  type: object
+                  properties:
+                    text:
+                      type: string
+                      example: Hello, world!
+                    from_language:
+                      type: string
+                      example: en
+                    to_language:
+                      type: string
+                      example: pt
+                  required:
+                  - text
+                  - from_language
+                  - to_language
+              required:
+              - translate
 servers:
 - url: http://localhost:8080
   variables:

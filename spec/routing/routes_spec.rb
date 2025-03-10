@@ -15,5 +15,11 @@ RSpec.describe 'Routes', type: :routing do
         expect(post: '/api/v1/authentication/register').to route_to('api/v1/authentication/register#create', format: :json)
       end
     end
+
+    describe 'text' do
+      it 'routes to api/v1/translate_text#create' do
+        expect(post: '/api/v1/translate_text').to route_to('api/v1/translate_text#create', format: :json)
+      end
+    end
   end
 end

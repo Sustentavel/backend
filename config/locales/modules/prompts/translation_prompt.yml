@@ -1,0 +1,15 @@
+pt-BR:
+  activemodel:
+    attributes:
+      translation_prompt:
+        from_language: "Linguagem de Origem"
+        to_language: "Linguagem de Destino"
+        text: "Texto"
+
+en:
+  activemodel:
+    attributes:
+      translation_prompt:
+        from_language: "From Language"
+        to_language: "To Language"
+        text: "Text"
