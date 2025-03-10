@@ -24,8 +24,8 @@ paths:
               example:
                 id: 1
                 email: user1@email.com
-                fullName: Dra. Luan Raia
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE2NjAwODd9.m-s87IKA34NLu0BWcs2u9mFBviRXVa5T-b2I1OWSJdM
+                fullName: Maria Alice Moraes Filho
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE2NjA1ODl9.1E6CAT6lEVVDNLw9cE6lDeA5dBeblybXY0GaLb9ntwY
       requestBody:
         content:
           application/json:
@@ -73,9 +73,9 @@ paths:
             application/json:
               example:
                 id: 2
-                email: keneth_huel@emmerich-goldner.test
-                fullName: Luna Pedroso
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE2NjAwODd9.-1Z7s6hq8fNUEjLmmGNqjyOSGyeW522OKkGvmCIza1s
+                email: chantal@bashirian.test
+                fullName: Dr. Maria Valentina Cachoeira
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE2NjA1ODl9.dgYkOdFIBCjsP2nN0OYuh3sPPCrVuPT0oqS9wybKnic
       requestBody:
         content:
           application/json:
@@ -161,7 +161,7 @@ paths:
           content:
             application/json:
               example:
-                errors: Sessão expirada ou inválida.
+                message: Sessão expirada ou inválida.
         '422':
           description: Invalid params
           content:
