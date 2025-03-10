@@ -9,7 +9,7 @@ class Api::V1::TranslateTextController < ApplicationController
       to_language: Language.new(acronym: translate_params[:to_language])
     )
 
-    raise CustomException.new(system_prompt.errors.full_messages.to_sentence) unless system_prompt.errors.empty?
+    raise(CustomException, system_prompt.errors.full_messages.to_sentence) unless system_prompt.errors.empty?
 
     text = translate_params[:text]
     @message_response = @ai.generate_text(prompt: text, system_prompt: system_prompt.prompt)
@@ -21,7 +21,7 @@ class Api::V1::TranslateTextController < ApplicationController
     params.require(:translate).permit(
       :text,
       :from_language,
-      :to_language,
+      :to_language
     )
   end
 end

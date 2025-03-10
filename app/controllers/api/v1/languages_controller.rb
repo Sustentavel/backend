@@ -1,7 +1,5 @@
-class Api::V1::LanguagesController < ApplicationController
-  def index
-    @languages = Language.all
+# frozen_string_literal: true
 
-    render json: @languages
-  end
+class Api::V1::LanguagesController < ApplicationController
+  def index; end
 end

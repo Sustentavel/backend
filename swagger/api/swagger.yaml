@@ -24,8 +24,8 @@ paths:
               example:
                 id: 1
                 email: user1@email.com
-                fullName: Gabriela Rêgo Neto
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE2NjA4Nzh9.kzufLrwuM1BM0sti1RypYwxgsVgwvN3E0tkjC7m1Yiw
+                fullName: João Victor Monteiro
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE3MTMzMDJ9.4LgCyPnzaDIE9auT2THdbhnICwj9VMcMyNBZbXfJHGk
       requestBody:
         content:
           application/json:
@@ -73,9 +73,9 @@ paths:
             application/json:
               example:
                 id: 2
-                email: coretta_lakin@keebler.example
-                fullName: Sra. Tertuliano Carneiro
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE2NjA4Nzh9.oXUF1HvlShmdozOyj6YV9ALQ_MJZlUKTfHIQN-q983c
+                email: benito_white@ryan.test
+                fullName: Francisco Castanheira Neto
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE3MTMzMDJ9.6-nzUsTsL9PbOrnt9Sl3V3ci9C29A9xKLO9iXYcJUk8
       requestBody:
         content:
           application/json:
@@ -95,6 +95,51 @@ paths:
               - email
               - password
               - full_name
+  "/api/v1/languages":
+    get:
+      summary: Loads all languages
+      tags:
+      - Languages
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Languages loaded
+          content:
+            application/json:
+              example:
+                languages:
+                - acronym: en
+                  name: Inglês
+                - acronym: es
+                  name: Espanhol
+                - acronym: fr
+                  name: Francês
+                - acronym: de
+                  name: Alemão
+                - acronym: it
+                  name: Italiano
+                - acronym: ja
+                  name: Japonês
+                - acronym: ko
+                  name: Coreano
+                - acronym: pt
+                  name: Português
+                - acronym: ru
+                  name: Russo
+                - acronym: zh
+                  name: Chinês
+        '401':
+          description: Expired or invalid session
+          content:
+            application/json:
+              example:
+                message: Sessão expirada ou inválida.
   "/":
     get:
       summary: Shows informations of API

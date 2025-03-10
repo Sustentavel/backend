@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -28,7 +29,7 @@ class User < ApplicationRecord
   before_save :validate_existance, if: -> { email_changed? }
   before_save :validate_password_strength, if: -> { self.password_digest_changed? }
 
-  has_many :ai_responses
+  has_many :ai_responses, dependent: :destroy
 
   private
 
@@ -43,7 +44,7 @@ class User < ApplicationRecord
 
     return if existing_user.blank?
 
-    existing_user.errors.add(field, I18n.t("modules/users/errors/messages.email_taken"))
+    existing_user.errors.add(field, I18n.t('modules/users/errors/messages.email_taken'))
   end
 
   def downcase_email

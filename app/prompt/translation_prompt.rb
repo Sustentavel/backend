@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TranslationPrompt
   include ActiveModel::Model
   include ActiveModel::Attributes
@@ -14,7 +16,8 @@ class TranslationPrompt
   end
 
   def prompt
-    "Traduza de #{from_language.name} para #{to_language.name}. Por favor, forneça-nos apenas o texto traduzido, e nada mais."
+    "Traduza de #{from_language.name} para #{to_language.name}.
+Por favor, forneça-nos apenas o texto traduzido, e nada mais."
   end
 
   private
@@ -23,5 +26,11 @@ class TranslationPrompt
     from_language.errors.each { |error| self.errors.add(:from_language, error.message) } if from_language.invalid?
     to_language.errors.each { |error| self.errors.add(:to_language, error.message) } if to_language.invalid?
 
-    self.errors.add(:from_language, "#{I18n.t('activemodel.errors.translation_prompt.same_language')} #{I18n.t('activemodel.attributes.translation_prompt.to_language')}") if from_language.acronym == to_language.acronym  end
+    return unless from_language.acronym == to_language.acronym
+
+    same_language_error = I18n.t('activemodel.errors.translation_prompt.same_language')
+    to_language_error = I18n.t('activemodel.attributes.translation_prompt.to_language')
+
+    self.errors.add(:from_language, "#{same_language_error} #{to_language_error}")
+  end
 end

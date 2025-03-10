@@ -9,20 +9,20 @@ gem 'image_processing'
 gem 'jb'
 gem 'jwt'
 gem 'kamal', require: false
+gem 'openai'
+gem 'paper_trail'
 gem 'puma', '>= 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 8.0.1'
 gem 'ransack'
 gem 'rspec'
+gem 'ruby-gemini-ai'
 gem 'solid_cable'
 gem 'solid_cache'
 gem 'solid_queue'
 gem 'sqlite3', '>= 2.1'
 gem 'thruster', require: false
 gem 'tzinfo-data', platforms: %i[windows jruby]
-gem 'paper_trail'
-gem "ruby-gemini-ai"
-gem "openai"
 
 gem 'rails-i18n'
 gem 'rswag-api'

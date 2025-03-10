@@ -1,0 +1,8 @@
+{
+  languages: Language.all.map do |language|
+    {
+      acronym: language.acronym,
+      name: language.name
+    }
+  end
+}

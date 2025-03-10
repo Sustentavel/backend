@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: ai_responses
@@ -33,7 +35,9 @@ RSpec.describe TranslationPrompt, type: :model do
     end
 
     context 'is invalid with invalid attributes' do
-      let(:translation_prompt) { described_class.new(from_language: from_language, to_language: Language.new(acronym: 'any_language')) }
+      let(:translation_prompt) do
+        described_class.new(from_language: from_language, to_language: Language.new(acronym: 'any_language'))
+      end
 
       it do
         expect(translation_prompt.errors.full_messages).to eq(['Linguagem de Destino não está incluído na lista'])
@@ -53,13 +57,16 @@ RSpec.describe TranslationPrompt, type: :model do
     let(:translation_prompt) { described_class.new(from_language: from_language, to_language: to_language) }
 
     it do
-      expect(translation_prompt.prompt).to eq('Traduza de Inglês para Espanhol. Por favor, forneça-nos apenas o texto traduzido, e nada mais.')
+      expect(translation_prompt.prompt).to eq("Traduza de Inglês para Espanhol.
+Por favor, forneça-nos apenas o texto traduzido, e nada mais.")
     end
   end
 
   Language::POSSIBLE_LANGUAGES.each do |language|
     context "with #{language} language" do
-      let(:translation_prompt) { described_class.new(from_language: Language.new(acronym: language), to_language: Language.new(acronym: 'es'))}
+      let(:translation_prompt) do
+        described_class.new(from_language: Language.new(acronym: language), to_language: Language.new(acronym: 'es'))
+      end
 
       it do
         expect(translation_prompt).to be_valid

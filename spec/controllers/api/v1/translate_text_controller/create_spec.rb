@@ -33,7 +33,7 @@ RSpec.describe Api::V1::TranslateTextController, :unit, type: :controller do
     before do
       authenticate_user(user)
 
-      allow_any_instance_of(GoogleAiService).to receive(:generate_text).and_return("Mocked AI Response")
+      allow_any_instance_of(GoogleAiService).to receive(:generate_text).and_return('Mocked AI Response')
     end
 
     context 'when translation is successful' do
@@ -42,7 +42,7 @@ RSpec.describe Api::V1::TranslateTextController, :unit, type: :controller do
       it 'returns translated text' do
         send_request
 
-        expect(json_response['message']).to eq('Mocked AI Response')
+        expect(json_response[:message]).to eq('Mocked AI Response')
       end
     end
 
@@ -57,12 +57,14 @@ RSpec.describe Api::V1::TranslateTextController, :unit, type: :controller do
         }
       end
 
+      let(:message) { 'Linguagem de Origem não está incluído na lista, Linguagem de Destino não está incluído na lista e Linguagem de Origem não pode ser igual à Linguagem de Destino' }
+
       it { is_expected.to have_http_status(:bad_request) }
 
       it 'returns error message' do
         send_request
 
-        expect(json_response['message']).to eq('Linguagem de Origem não está incluído na lista, Linguagem de Destino não está incluído na lista e Linguagem de Origem não pode ser igual à Linguagem de Destino')
+        expect(json_response[:message]).to eq(message)
       end
     end
   end

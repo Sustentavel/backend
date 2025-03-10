@@ -22,10 +22,18 @@ AllCops:
     - 'lib/tasks/**/*'
 
 Metrics/BlockLength:
-  AllowedMethods: ['describe', 'context']
+  AllowedMethods: ['describe', 'context', 'path', 'post', 'get', 'put', 'delete']
+
+Layout/LineLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'app/prompt/**/*'
 
 Metrics/MethodLength:
-  Max: 20
+  Max: 40
+
+Metrics/AbcSize:
+  Max: 40
 
 Style/StringHashKeys:
   Enabled: false

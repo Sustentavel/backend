@@ -6,7 +6,7 @@ RSpec.describe '/api/v1/translate_text', type: :request, swagger_doc: 'api/swagg
   let(:user) { create(:user) }
 
   before do
-    allow_any_instance_of(GoogleAiService).to receive(:generate_text).and_return("Olá, mundo!")
+    allow_any_instance_of(GoogleAiService).to receive(:generate_text).and_return('Olá, mundo!')
   end
 
   path '/api/v1/translate_text' do
@@ -81,7 +81,7 @@ RSpec.describe '/api/v1/translate_text', type: :request, swagger_doc: 'api/swagg
       end
 
       response '401', 'Expired or invalid session' do
-        let(:translate_params) { {  } }
+        let(:translate_params) { {} }
         let(:Authorization) { nil }
 
         after do |example|
@@ -96,7 +96,7 @@ RSpec.describe '/api/v1/translate_text', type: :request, swagger_doc: 'api/swagg
       end
 
       response '422', 'Invalid params' do
-        let(:translate_params) { {  } }
+        let(:translate_params) { {} }
 
         after do |example|
           example.metadata[:response][:content] = {

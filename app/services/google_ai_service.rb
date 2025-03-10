@@ -1,9 +1,11 @@
-require "gemini-ai"
+# frozen_string_literal: true
+
+require 'gemini-ai'
 
 class GoogleAiService
   def initialize(user:)
     @client = GeminiAi::Client.new(
-      api_key: ENV['GEMINI_AI_API_KEY']
+      api_key: ENV.fetch('GEMINI_AI_API_KEY', nil)
     )
     @current_user = user
   end
@@ -23,8 +25,12 @@ class GoogleAiService
       model: 'gemini-2.0-flash'
     )
 
+    message = response['candidates']&.first&.[]('content')&.[]('parts')&.first&.[]('text')
+
+    raise(CustomException, 'No response from Google AI') if message.nil?
+
     formatted_response = {
-      message: response['candidates']&.first['content']['parts']&.first['text'] || raise('No response from AI'),
+      message: message.strip,
       metadata: {
         prompt_tokens: response['usageMetadata']['promptTokenCount'],
         candidate_tokens: response['usageMetadata']['candidatesTokenCount'],

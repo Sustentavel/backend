@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Language
   include ActiveModel::Model
   include ActiveModel::Attributes
@@ -17,6 +19,10 @@ class Language
 
   def set_name
     self.name = acronym_to_language(acronym)
+  end
+
+  def self.all
+    POSSIBLE_LANGUAGES.map { |acronym| Language.new(acronym: acronym) }
   end
 
   private

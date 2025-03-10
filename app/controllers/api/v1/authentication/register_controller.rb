@@ -6,7 +6,10 @@ class Api::V1::Authentication::RegisterController < ApplicationController
   def create
     @user = User.find_by(email: register_params[:email])
 
-    return render json: { message: I18n.t('modules/users/errors/messages.user_already_exists') }, status: :conflict if @user.present?
+    if @user.present?
+      return render json: { message: I18n.t('modules/users/errors/messages.user_already_exists') },
+                    status: :conflict
+    end
 
     @user = User.create!(register_params)
 

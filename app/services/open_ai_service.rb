@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'openai'
 
 class OpenAiService
   def initialize
     @client = OpenAI::Client.new(
-      access_token: ENV['OPENAI_AI_API_KEY'],
+      access_token: ENV.fetch('OPENAI_AI_API_KEY', nil),
       log_errors: true
     )
   end
@@ -19,13 +21,17 @@ class OpenAiService
           },
           {
             role: 'user',
-            content: user_prompt
+            content: prompt
           }
         ],
         **options
       }
     )
 
-    response[:choices]&.first[:message][:content] || raise('No response from AI')
+    content = response[:choices]&.first&.[](:message)&.[](:content)
+
+    raise(CustomException, 'No response from OpenAI') if content.nil?
+
+    content
   end
 end

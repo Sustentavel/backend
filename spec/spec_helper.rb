@@ -20,7 +20,6 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
-
   config.around(:each) do |spec|
     DatabaseCleaner.cleaning { spec.run }
   end

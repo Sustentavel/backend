@@ -40,7 +40,9 @@ RSpec.describe '/api/v1/authentication/register', type: :request, swagger_doc: '
       end
 
       response '422', 'Invalid password' do
-        let(:user_params) { { user: { email: Faker::Internet.email, password: 'weak_password', full_name: Faker::Name.name } } }
+        let(:user_params) do
+          { user: { email: Faker::Internet.email, password: 'weak_password', full_name: Faker::Name.name } }
+        end
 
         after do |example|
           example.metadata[:response][:content] = {
@@ -54,7 +56,9 @@ RSpec.describe '/api/v1/authentication/register', type: :request, swagger_doc: '
       end
 
       response '201', 'Created successfully' do
-        let(:user_params) { { user: { email: Faker::Internet.email, password: create(:user).password, full_name: Faker::Name.name } } }
+        let(:user_params) do
+          { user: { email: Faker::Internet.email, password: create(:user).password, full_name: Faker::Name.name } }
+        end
 
         after do |example|
           example.metadata[:response][:content] = {

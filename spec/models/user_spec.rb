@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -37,7 +38,7 @@ RSpec.describe User, type: :model do
       let!(:user1) { create(:user, email: email) }
       let(:user2) { build(:user, email: email) }
 
-      it { expect(user2).to_not be_valid }
+      it { expect(user2).to_not(be_valid) }
     end
 
     context 'is not valid with a weak password' do

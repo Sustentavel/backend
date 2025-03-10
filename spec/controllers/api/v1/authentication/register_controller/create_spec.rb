@@ -17,7 +17,7 @@ RSpec.describe Api::V1::Authentication::RegisterController, :unit, type: :contro
         {
           password: user.password,
           full_name: user.full_name,
-          email: user.email,
+          email: user.email
         }
       end
 
@@ -36,7 +36,7 @@ RSpec.describe Api::V1::Authentication::RegisterController, :unit, type: :contro
           {
             password: user.password,
             full_name: user.full_name,
-            email: user.email,
+            email: user.email
           }
         end
 
@@ -49,7 +49,9 @@ RSpec.describe Api::V1::Authentication::RegisterController, :unit, type: :contro
       end
 
       context 'with invalid password' do
-        let(:params) { { user: { email: Faker::Internet.email, full_name: Faker::Name.name, password: 'weak_password' } } }
+        let(:params) do
+          { user: { email: Faker::Internet.email, full_name: Faker::Name.name, password: 'weak_password' } }
+        end
 
         it 'should return an error' do
           send_request

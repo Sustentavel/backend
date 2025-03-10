@@ -12,7 +12,8 @@ RSpec.describe 'Routes', type: :routing do
 
     describe 'register' do
       it 'routes to api/v1/authentication/register#create' do
-        expect(post: '/api/v1/authentication/register').to route_to('api/v1/authentication/register#create', format: :json)
+        expect(post: '/api/v1/authentication/register').to route_to('api/v1/authentication/register#create',
+                                                                    format: :json)
       end
     end
   end
