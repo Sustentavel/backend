@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.1
 info:
-  title: Authentication API
+  title: Handu API
   version: v1
 paths:
   "/api/v1/authentication/login":
@@ -24,8 +24,8 @@ paths:
               example:
                 id: 1
                 email: user1@email.com
-                fullName: Karla Jesus
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE2NjA3Mzd9.gE_waSEGDYvP5Rw2-P3gFsWnmGRevveqDNGBavhdZUw
+                fullName: Gabriela Rêgo Neto
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NDE2NjA4Nzh9.kzufLrwuM1BM0sti1RypYwxgsVgwvN3E0tkjC7m1Yiw
       requestBody:
         content:
           application/json:
@@ -73,9 +73,9 @@ paths:
             application/json:
               example:
                 id: 2
-                email: corey@bode-denesik.example
-                fullName: Danilo Vieira
-                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE2NjA3Mzd9.yGRZ7dc8GtmvEEXOeKtEpldcYCCPyIJXBeCt1keaKhw
+                email: coretta_lakin@keebler.example
+                fullName: Sra. Tertuliano Carneiro
+                token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3NDE2NjA4Nzh9.oXUF1HvlShmdozOyj6YV9ALQ_MJZlUKTfHIQN-q983c
       requestBody:
         content:
           application/json:
