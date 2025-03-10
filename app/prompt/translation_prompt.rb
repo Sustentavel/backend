@@ -1,35 +1,27 @@
 class TranslationPrompt
   include ActiveModel::Model
   include ActiveModel::Attributes
+  include ActiveModel::Validations::Callbacks
 
-  POSSIBLE_LANGUAGES = %w[en es fr de it ja ko pt ru zh].freeze
+  attr_accessor :from_language, :to_language
 
-  attribute :from_language, :string
-  attribute :to_language, :string
+  validates :from_language, presence: true
+  validates :to_language, presence: true
 
-  validates :from_language, presence: true, inclusion: { in: POSSIBLE_LANGUAGES + ['auto'] }
-  validates :to_language, presence: true, inclusion: { in: POSSIBLE_LANGUAGES }
+  def initialize(attributes = {})
+    super
+    validate_languages
+  end
 
   def prompt
-    "Translate from #{acronym_to_language(from_language)} to #{acronym_to_language(to_language)}. Please provide us only the translated text, and nothing more."
+    "Traduza de #{from_language.name} para #{to_language.name}. Por favor, forneça-nos apenas o texto traduzido, e nada mais."
   end
 
   private
 
-  def acronym_to_language(acronym)
-    object = {
-      'en' => 'English',
-      'es' => 'Spanish',
-      'fr' => 'French',
-      'de' => 'German',
-      'it' => 'Italian',
-      'ja' => 'Japanese',
-      'ko' => 'Korean',
-      'pt' => 'Portuguese',
-      'ru' => 'Russian',
-      'zh' => 'Chinese'
-    }
+  def validate_languages
+    from_language.errors.each { |error| self.errors.add(:from_language, error.message) } if from_language.invalid?
+    to_language.errors.each { |error| self.errors.add(:to_language, error.message) } if to_language.invalid?
 
-    object[acronym]
-  end
+    self.errors.add(:from_language, "#{I18n.t('activemodel.errors.translation_prompt.same_language')} #{I18n.t('activemodel.attributes.translation_prompt.to_language')}") if from_language.acronym == to_language.acronym  end
 end

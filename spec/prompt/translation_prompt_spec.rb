@@ -20,9 +20,12 @@
 require 'spec_helper'
 
 RSpec.describe TranslationPrompt, type: :model do
+  let(:from_language) { Language.new(acronym: 'en') }
+  let(:to_language) { Language.new(acronym: 'es') }
+
   context 'validations' do
     context 'is valid with valid attributes' do
-      let(:translation_prompt) { described_class.new(from_language: 'en', to_language: 'es') }
+      let(:translation_prompt) { described_class.new(from_language: from_language, to_language: to_language) }
 
       it do
         expect(translation_prompt).to be_valid
@@ -30,40 +33,36 @@ RSpec.describe TranslationPrompt, type: :model do
     end
 
     context 'is invalid with invalid attributes' do
-      let(:translation_prompt) { described_class.new(from_language: 'en', to_language: 'any_language') }
+      let(:translation_prompt) { described_class.new(from_language: from_language, to_language: Language.new(acronym: 'any_language')) }
 
       it do
-        expect(translation_prompt).not_to be_valid
+        expect(translation_prompt.errors.full_messages).to eq(['Linguagem de Destino não está incluído na lista'])
+      end
+    end
+
+    context 'is invalid with equal languages' do
+      let(:translation_prompt) { described_class.new(from_language: from_language, to_language: from_language) }
+
+      it do
+        expect(translation_prompt.errors.full_messages).to eq(['Linguagem de Origem não pode ser igual à Linguagem de Destino'])
       end
     end
   end
 
   context 'prompt' do
-    let(:translation_prompt) { described_class.new(from_language: 'en', to_language: 'es') }
+    let(:translation_prompt) { described_class.new(from_language: from_language, to_language: to_language) }
 
     it do
-      expect(translation_prompt.prompt).to eq('Translate from English to Spanish. Please provide us only the translated text, and nothing more.')
+      expect(translation_prompt.prompt).to eq('Traduza de Inglês para Espanhol. Por favor, forneça-nos apenas o texto traduzido, e nada mais.')
     end
   end
 
-  context 'acronym_to_language' do
-    let(:translation_prompt) { described_class.new(from_language: 'en', to_language: 'es') }
-
-    it do
-      expect(translation_prompt.send(:acronym_to_language, 'en')).to eq('English')
-    end
-  end
-
-  TranslationPrompt::POSSIBLE_LANGUAGES.each do |language|
+  Language::POSSIBLE_LANGUAGES.each do |language|
     context "with #{language} language" do
-      let(:translation_prompt) { described_class.new(from_language: language, to_language: 'es') }
+      let(:translation_prompt) { described_class.new(from_language: Language.new(acronym: language), to_language: Language.new(acronym: 'es'))}
 
       it do
         expect(translation_prompt).to be_valid
-      end
-
-      it 'have the corresponding language full name' do
-        expect(translation_prompt.send(:acronym_to_language, language)).not_to be_nil
       end
     end
   end

@@ -1,0 +1,31 @@
+require 'spec_helper'
+
+RSpec.describe Language, type: :model do
+  context 'possible_languages' do
+    it do
+      expect(Language::POSSIBLE_LANGUAGES).to eq(%w[en es fr de it ja ko pt ru zh])
+    end
+  end
+
+  Language::POSSIBLE_LANGUAGES.each do |language|
+    context "with #{language} language" do
+      let(:language_class) { described_class.new(acronym: language) }
+
+      it do
+        expect(language_class).to be_valid
+      end
+
+      it 'has the correct name' do
+        expect(language_class.name).not_to include('Translation missing')
+      end
+    end
+  end
+
+  context 'when acronym is invalid' do
+    let(:language) { described_class.new(acronym: 'any_language') }
+
+    it do
+      expect(language).not_to be_valid
+    end
+  end
+end

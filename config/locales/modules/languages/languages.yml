@@ -1,0 +1,36 @@
+pt-BR:
+  activemodel:
+    attributes:
+      languages:
+        from_language: "Linguagem de Origem"
+        to_language: "Linguagem de Destino"
+  languages:
+    en: Inglês
+    es: Espanhol
+    fr: Francês
+    de: Alemão
+    it: Italiano
+    ja: Japonês
+    ko: Coreano
+    pt: Português
+    ru: Russo
+    zh: Chinês
+
+
+en:
+  activemodel:
+    attributes:
+      languages:
+        from_language: "From Language"
+        to_language: "To Language"
+  languages:
+    en: English
+    es: Spanish
+    fr: French
+    de: German
+    it: Italian
+    ja: Japanese
+    ko: Korean
+    pt: Portuguese
+    ru: Russian
+    zh: Chinese

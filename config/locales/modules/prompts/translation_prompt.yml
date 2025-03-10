@@ -5,6 +5,9 @@ pt-BR:
         from_language: "Linguagem de Origem"
         to_language: "Linguagem de Destino"
         text: "Texto"
+    errors:
+      translation_prompt:
+        same_language: não pode ser igual à
 
 en:
   activemodel:
@@ -13,3 +16,6 @@ en:
         from_language: "From Language"
         to_language: "To Language"
         text: "Text"
+    errors:
+      translation_prompt:
+        same_language: cannot be equal to

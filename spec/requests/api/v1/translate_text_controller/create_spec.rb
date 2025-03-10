@@ -27,8 +27,8 @@ RSpec.describe '/api/v1/translate_text', type: :request, swagger_doc: 'api/swagg
             type: :object,
             properties: {
               text: { type: :string, example: 'Hello, world!' },
-              from_language: { type: :string, example: 'en', enum: TranslationPrompt::POSSIBLE_LANGUAGES },
-              to_language: { type: :string, example: 'pt', enum: TranslationPrompt::POSSIBLE_LANGUAGES }
+              from_language: { type: :string, example: 'en', enum: Language::POSSIBLE_LANGUAGES },
+              to_language: { type: :string, example: 'pt', enum: Language::POSSIBLE_LANGUAGES }
             },
             required: %w[text from_language to_language]
           }

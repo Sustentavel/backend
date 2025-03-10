@@ -62,7 +62,7 @@ RSpec.describe Api::V1::TranslateTextController, :unit, type: :controller do
       it 'returns error message' do
         send_request
 
-        expect(json_response['message']).to eq('Linguagem de Origem não está incluído na lista e Linguagem de Destino não está incluído na lista')
+        expect(json_response['message']).to eq('Linguagem de Origem não está incluído na lista, Linguagem de Destino não está incluído na lista e Linguagem de Origem não pode ser igual à Linguagem de Destino')
       end
     end
   end

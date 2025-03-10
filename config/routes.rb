@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         end
 
         resources :translate_text, only: :create
+        resources :languages, only: :index
       end
     end
 
