@@ -12,13 +12,13 @@ class ApplicationController < ActionController::API
       @decoded = JwtService.decode(header)
 
       if @decoded.blank?
-        return render json: { errors: I18n.t('errors/messages.invalid_session') },
+        return render json: { message: I18n.t('errors/messages.invalid_session') },
                       status: :unauthorized
       end
 
       @current_user = User.find(@decoded[:user_id])
     rescue JWT::DecodeError => e
-      render json: { errors: e.message }, status: :unauthorized
+      render json: { message: e.message }, status: :unauthorized
     end
   end
 
